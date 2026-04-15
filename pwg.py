@@ -14,11 +14,7 @@ class PasswordGeneratorApp:
         self.root.title("Password Generator Pro")
         self.root.geometry("700x750")
         self.root.configure(bg='#f0f0f0')
-        
-        # Set application icon (if you have an icon file)
-        # root.iconbitmap('icon.ico')  # Uncomment if you have an icon file
-        
-        # Password history
+    
         self.password_history = []
         self.history_limit = 20
         
@@ -46,6 +42,12 @@ class PasswordGeneratorApp:
         display_frame = tk.LabelFrame(main_frame, text="Generated Password", 
                                      font=('Arial', 10, 'bold'), bg='#f0f0f0', fg='#34495e')
         display_frame.pack(fill=tk.X, pady=(0, 20))
+
+          # Copy button
+        copy_btn = tk.Button(display_frame, text="📋 Copy to Clipboard", 
+                            command=self.copy_to_clipboard, bg='#3498db', fg='white',
+                            font=('Arial', 10, 'bold'), bd=0, padx=15, pady=8)
+        copy_btn.pack(pady=(0, 10))
         
         # Password display
         self.password_var = tk.StringVar()
@@ -54,12 +56,7 @@ class PasswordGeneratorApp:
                                  fg='#2c3e50', justify='center', state='readonly')
         password_entry.pack(fill=tk.X, padx=10, pady=10, ipady=8)
         
-        # Copy button
-        copy_btn = tk.Button(display_frame, text="📋 Copy to Clipboard", 
-                            command=self.copy_to_clipboard, bg='#3498db', fg='white',
-                            font=('Arial', 10, 'bold'), bd=0, padx=15, pady=8)
-        copy_btn.pack(pady=(0, 10))
-        
+      
         # Settings frame
         settings_frame = tk.LabelFrame(main_frame, text="Password Settings", 
                                       font=('Arial', 10, 'bold'), bg='#f0f0f0', fg='#34495e')
